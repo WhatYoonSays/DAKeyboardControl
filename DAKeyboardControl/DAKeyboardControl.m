@@ -552,7 +552,7 @@ static char UIViewKeyboardOpened;
 
 - (void)swizzled_addSubview:(UIView *)subview
 {
-    if (!subview.inputAccessoryView)
+    if (!subview.inputAccessoryView && self.window == [UIApplication sharedApplication].delegate.window) //Only apply the mods to views within your app's window
     {
         if ([subview isKindOfClass:[UITextField class]])
         {
